@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout Structure</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f9fafb, #eef2f3);
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+
+    .container {
+        display: flex;
+        gap: 25px;
+        padding: 40px;
+        animation: fadeIn 0.8s ease-in-out;
+        max-width: 1400px;
+        margin: auto;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+
+    /* Left Section */
+    .left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    .random-text {
+        background: linear-gradient(135deg, #3f51b5, #5a6fd6);
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0px 6px 15px rgba(0,0,0,0.15);
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.6rem;
+        color: #fff;
+        letter-spacing: 0.5px;
+    }
+
+    .highlight-text {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #222;
+    }
+
+    .preference-text {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+    .radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 5px;
+    }
+
+    .radio-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.95rem;
+        color: #444;
+    }
+
+    .radio-option input {
+        transform: scale(1.2);
+        accent-color: #3f51b5;
+    }
+
+    .submit-btn {
+        margin-top: 15px;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        background: #3f51b5;
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        width: 100%;
+    }
+
+    .submit-btn:hover {
+        background: #2e3c9e;
+        transform: translateY(-2px);
+    }
+
+    .submit-btn:active {
+        transform: translateY(0);
+    }
+
+    /* Thank You Message */
+    .thank-you {
+        display: none;
+        background: white;
+        padding: 35px 25px;
+        border-radius: 14px;
+        text-align: center;
+        box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+        animation: fadeUp 0.6s ease-out;
+    }
+
+    .thank-you h2 {
+        font-size: 1.8rem;
+        color: #3f51b5;
+        margin-bottom: 10px;
+    }
+
+    .thank-you p {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Right Section */
+    .right {
+        flex: 2;
+        display: flex;
+        gap: 25px;
+    }
+
+    .paragraph {
+        flex: 1;
+        background: white;
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .paragraph:hover {
+        box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+        transform: translateY(-4px);
+    }
+
+    .paragraph h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: #3f51b5;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 6px;
+    }
+
+    .paragraph p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #555;
+        margin: 4px 0;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Left section -->
+    <div class="left">
+        <div class="random-text">getKural.ai</div>
+        <div class="highlight-text">Here are the best results for your keyword : {{name}}</div>
+
+        <!-- Preference Form -->
+        <form id="preferenceForm">
+            <div class="preference-text">Which response do you prefer?</div>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="preference" value="response1" required> Response 1
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="preference" value="response2"> Response 2
+                </label>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+        <!-- Thank You Message -->
+        <div class="thank-you" id="thankYouMessage">
+            <h2> Thank You!</h2>
+            <p>Your preference has been recorded successfully.</p>
+        </div>
+    </div>
+
+    <!-- Right section -->
+    <div class="right">
+        <div class="paragraph">
+            <h3>Response 1</h3>
+            <p><strong>T1</strong></p>
+            <p>Meaning</p>
+            <p><strong>T2</strong></p>
+            <p>Meaning</p>
+            <p><strong>T3</strong></p>
+            <p>Meaning</p>
+        </div>
+
+        <div class="paragraph">
+            <h3>Response 2</h3>
+            <p><strong>T1</strong></p>
+            <p>Meaning</p>
+            <p><strong>T2</strong></p>
+            <p>Meaning</p>
+            <p><strong>T3</strong></p>
+            <p>Meaning</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("preferenceForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // prevent page reload
+        document.getElementById("preferenceForm").style.display = "none";
+        document.getElementById("thankYouMessage").style.display = "block";
+    });
+</script>
+
+</body>
+</html>

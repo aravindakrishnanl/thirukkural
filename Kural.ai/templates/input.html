@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Information Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #4e73df, #1cc88a);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #ffffffcc;
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      padding: 35px 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      max-width: 420px;
+      width: 100%;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.8em;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      color: #34495e;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+      font-weight: 500;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #dcdcdc;
+      border-radius: 8px;
+      font-size: 1em;
+      color: #2c3e50;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="text"]::placeholder {
+      color: #aaa;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border: 1px solid #4e73df;
+      box-shadow: 0 0 0 3px rgba(78,115,223,0.2);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #4e73df;
+      color: white;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover:not(:disabled) {
+      background: #375ac2;
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Search Keyword</h1>
+    <form method="POST" id="userForm">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Enter a keyword</label>
+        <input type="text" id="name" name="name" placeholder="Type here..." required>
+      </div>
+      <button type="submit" id="submitBtn">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
